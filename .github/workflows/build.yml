@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_win:
-    runs-on: windows-2022
+    runs-on: windows-2019
     env:
       BOOST_VER_DOT: 1.78.0
       BOOST_VER_UND: 1_78_0
@@ -44,9 +44,9 @@ jobs:
         shell: cmd
         run: |
           cd fritzing-app
-          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
-          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" -test
-          tools\release_fritzing.bat ${{ env.FRITZING_VER }} 64 2022
+          call "C:\Program Files\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
+          call "C:\Program Files\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -test
+          tools\release_fritzing.bat ${{ env.FRITZING_VER }} 64 2019
 
       - name: Show files
         shell: bash
