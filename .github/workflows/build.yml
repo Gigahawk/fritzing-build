@@ -46,26 +46,14 @@ jobs:
 
       - name: Build Fritzing
         shell: cmd
-        continue-on-error: true
         run: |
           cd fritzing-app
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -test
           tools\release_fritzing.bat ${{ env.FRITZING_VER }} 64 2019
 
-      - name: Show files
-        shell: bash
-        run: ls
-
-      - name: Show makefiles
-        shell: bash
-        run: |
-          cd fritzing-app
-          echo
-          echo Makefile
-          echo
-          cat Makefile
-          echo
-          echo Makefile.Release
-          echo
-          cat Makefile.Release
+      - name: Upload build
+        uses: actions/upload-artifact@v2
+        with:
+          name: fritzing_${{ env.FRITZING_VER }}
+          path: release64/fritzing-${{ env.FRITZING_VER}}.windows.64.zip
