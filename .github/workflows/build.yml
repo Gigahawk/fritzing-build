@@ -30,8 +30,9 @@ jobs:
         shell: bash
         run: |
           echo "Building ${{ matrix.fritzing_ver }}"
-          echo "FRITZING_HASH=$(./get_ver_hash.sh ${{ matrix.fritzing_ver }})" >> $GITHUB_ENV
-          echo "Commit hash is $FRITZING_HASH"
+          export _FRITZING_HASH=$(./get_ver_hash.sh ${{ matrix.fritzing_ver }})
+          echo "Commit hash is $_FRITZING_HASH"
+          echo "FRITZING_HASH=$_FRITZING_HASH" >> $GITHUB_ENV
 
       - name: Clone fritzing-app at specified commit
         shell: bash
