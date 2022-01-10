@@ -33,8 +33,12 @@ jobs:
           cd libgit2
           mkdir build
           cd build
-          cmake -DBUILD_SHARED_LIBS=0ff ..
-          cmake --build .
+          cmake -DBUILD_SHARED_LIBS=OFF ..
+          cmake --build . --config Release
+
+      - name: Patch Fritzing build script to use correct Qt
+        shell: bash
+        run: patch -p1 < qt_location.patch
 
       - name: Build Fritzing
         shell: cmd
