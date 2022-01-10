@@ -19,7 +19,7 @@ jobs:
 
       - name: Download boost
         shell: bash
-        run: curl -O https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_VER_DOT }}/source/boost_${{ env.BOOST_VER_UND }}.zip
+        run: curl -L -O https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_VER_DOT }}/source/boost_${{ env.BOOST_VER_UND }}.zip
 
       - name: Extract boost
         run: 7z x boost_${{ env.BOOST_VER_UND }}.zip
