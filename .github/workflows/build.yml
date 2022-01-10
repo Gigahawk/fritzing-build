@@ -15,6 +15,11 @@ jobs:
           submodules: recursive
 
       - name: Download boost
-        run: wget https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
+        shell: bash
+        run: curl -O https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
+
+      - name: Show files
+        shell: bash
+        run: ls
 
 
