@@ -17,6 +17,9 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Install Qt
+        run: choco install qt5-default
+
       - name: Download boost
         shell: bash
         run: curl -L -O https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_VER_DOT }}/source/boost_${{ env.BOOST_VER_UND }}.zip
