@@ -37,7 +37,7 @@ jobs:
           cd libgit2
           mkdir build64
           cd build64
-          cmake -DBUILD_SHARED_LIBS=OFF ..
+          cmake ..
           cmake --build . --config Release
 
       - name: Patch Fritzing build script to use correct Qt
