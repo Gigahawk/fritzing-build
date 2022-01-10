@@ -27,8 +27,14 @@ jobs:
       - name: Extract boost
         run: 7z x boost_${{ env.BOOST_VER_UND }}.zip
 
+      - name: Build libgit2
+        run: |
+          cd libgit2
+          mkdir build
+          cd build
+          cmake -DBUILD_SHARED_LIBS=0ff ..
+          cmake --build .
+
       - name: Show files
         shell: bash
         run: ls
-
-
