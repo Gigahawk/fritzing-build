@@ -8,6 +8,9 @@ on:
 jobs:
   build_win:
     runs-on: windows-2022
+    env:
+      BOOST_VER_DOT: 1.78.0
+      BOOST_VER_UND: 1_78_0
 
     steps:
       - uses: actions/checkout@v2
@@ -16,7 +19,10 @@ jobs:
 
       - name: Download boost
         shell: bash
-        run: curl -O https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
+        run: curl -O https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_VER_DOT }}/source/boost_${{ env.BOOST_VER_UND }}.zip
+
+      - name: Extract boost
+        run: 7z x boost_${{ env.BOOST_VER_UND }}.zip
 
       - name: Show files
         shell: bash
