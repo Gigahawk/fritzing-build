@@ -18,11 +18,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Checkout Fritzing release tag
-        run: |
-          cd fritzing-app
-          git checkout ${{ env.FRITZING_VER }}
-
       - name: Install Qt
         run: choco install qt5-default
 
