@@ -39,8 +39,8 @@ jobs:
       - name: Build libgit2
         run: |
           cd libgit2
-          mkdir build
-          cd build
+          mkdir build64
+          cd build64
           cmake -DBUILD_SHARED_LIBS=OFF ..
           cmake --build . --config Release
 
