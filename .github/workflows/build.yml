@@ -1,0 +1,20 @@
+name: build
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+  build_win:
+    runs-on: windows-2022
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      - name: Download boost
+        run: wget https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.zip
+
+
