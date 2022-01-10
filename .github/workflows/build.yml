@@ -40,9 +40,9 @@ jobs:
           cmake ..
           cmake --build . --config Release
 
-      - name: Patch Fritzing build script to use correct Qt
+      - name: Replace Fritzing build script
         shell: bash
-        run: patch -p1 < qt_location.patch
+        run: cp release_fritzing.bat fritzing-app/tools/release_fritzing.bat
 
       - name: Build Fritzing
         shell: cmd
