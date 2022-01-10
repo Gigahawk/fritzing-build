@@ -1,0 +1,10 @@
+The Fritzing org does a really poor job of tagging release versions.
+Version numbers will be tracked here matching commits where the version number was bumped.
+Versions with "-github" appended match tags available from https://github.com/fritzing/fritzing-app/tags
+
+0.9.9b,cb86bd6737712e45fdfbcbe45845327e1c7a1ad6
+0.9.8b,67355fc7ccf026eac607c5adcc72bbb769b10584
+0.9.7b,0e398a6202751bc7c6c4b2386192ec594c14dd23
+0.9.6-github,8a1e0682d7846f6384ae45373961ed693b4c55d2
+0.9.6,b09444d48d9260f9697b328a12d37cdf166c813b
+0.9.6b,4cf98f246774a320f35fe821cce7f220f3f3647d

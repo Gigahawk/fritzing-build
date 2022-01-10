@@ -8,15 +8,40 @@ on:
 jobs:
   build_win:
     runs-on: windows-2019
+    strategy:
+      matrix:
+        fritzing_ver: [
+          0.9.9b,
+          0.9.8b,
+          0.9.7b,
+          0.9.6-github,
+          0.9.6,
+          0.9.6b
+        ]
     env:
       BOOST_VER_DOT: 1.78.0
       BOOST_VER_UND: 1_78_0
-      FRITZING_VER: 0.9.6
-
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
+
+      - name: Determine fritzing-app release commit
+        shell: bash
+        run: |
+          echo "Building ${{ matrix.fritzing_ver }}"
+          echo "FRITZING_HASH=$(./get_ver_hash.sh ${{ matrix.fritzing_ver }})" >> $GITHUB_ENV
+          echo "Commit hash is $FRITZING_HASH"
+
+      - name: Clone fritzing-app at specified commit
+        shell: bash
+        run: |
+          mkdir fritzing-app
+          cd fritzing-app
+          git init
+          git remote add origin https://github.com/fritzing/fritzing-app.git
+          git fetch --depth 1 origin $FRITZING_HASH
+          git checkout FETCH_HEAD
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
@@ -50,10 +75,10 @@ jobs:
           cd fritzing-app
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -test
-          tools\release_fritzing.bat ${{ env.FRITZING_VER }} 64 2019
+          tools\release_fritzing.bat ${{ matrix.fritzing_ver }} 64 2019
 
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
-          name: fritzing_${{ env.FRITZING_VER }}
-          path: release64/fritzing-${{ env.FRITZING_VER}}.windows.64.zip
+          name: fritzing_${{ matrix.fritzing_ver }}
+          path: release64/fritzing-${{ matrix.fritzing_ver }}.windows.64.zip
