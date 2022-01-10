@@ -39,6 +39,7 @@ set PATH=%PATH%;"C:\Program Files (x86)\Git\bin";
 
 echo set the path to the qt sdk bin folder
 set QTBIN=%Qt5_Dir%\bin
+set "QTBIN=%QTBIN:/=\%"
 IF %2==64 (
 	set arch=""QMAKE_TARGET.arch=x86_64""
 ) ELSE IF %2==32 (
