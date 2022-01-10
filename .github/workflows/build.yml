@@ -19,7 +19,11 @@ jobs:
           submodules: recursive
 
       - name: Install Qt
-        run: choco install qt5-default
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: 5.15.2
+          target: desktop
+          arch: win64_msvc2019_64
 
       - name: Download boost
         shell: bash

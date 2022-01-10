@@ -6,7 +6,7 @@ index f8e758a8..30527ea1 100644
  set PATH=%PATH%;"C:\Program Files (x86)\Git\bin";
  
  echo set the path to the qt sdk bin folder
-+set QTBIN=C:\Qt\5.15.2\mingw81_64\bin
++set QTBIN=%RUNNER_WORKSPACE%\Qt\5.15.2\mingw81_64\bin
  IF %2==64 (
 -	IF %3==2012 (
 -	set QTBIN=C:\Qt\5.6\msvc2012_64\bin
@@ -35,7 +35,7 @@ index f8e758a8..30527ea1 100644
 -		set arch=.
 -	) ELSE (
 -		echo second parameter--target architecture--should be either "32" for a 32-bit build or "64" for a 64-bit build
--		dir C:\Qt
+-		dir %RUNNER_WORKSPACE%\Qt
 -		EXIT /B 1
 -	)
 +	echo second parameter--target architecture--should be either "32" for a 32-bit build or "64" for a 64-bit build
